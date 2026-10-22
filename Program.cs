@@ -1,6 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using StudentAPI.Data;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+var connectionstring = builder.Configuration.GetConnectionString("DefaultConnection")
+?? throw new Exception("Connection string 'DefaultConnection' not found.");
+builder.Services.AddDbContext<StudentDbContext>(options =>
+    options.UseNpgsql(connectionstring));
+
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
