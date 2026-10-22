@@ -36,6 +36,3 @@ EXPOSE 10000
 
 # Start ASP.NET Core API
 ENTRYPOINT ["dotnet", "StudentAPI.dll"]
-
-
--- COMMIT Name = First Database Query
