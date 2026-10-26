@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using StudentAPI.Models;
-
-namespace StudentAPI.Data;
+using StudentApi.Models;
+namespace StudentApi.Data;
 public class StudentDbContext(DbContextOptions<StudentDbContext> options) : DbContext(options)
 {
     public DbSet<Student> Students => Set<Student>();
     public DbSet<AcadLevel> AcadLevels => Set<AcadLevel>();
     public DbSet<Section> Sections => Set<Section>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Student>().HasOne<AcadLevel>()
